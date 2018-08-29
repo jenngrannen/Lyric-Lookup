@@ -108,8 +108,6 @@ def searchForLyrics(query):
             retlist.append(songID)
     return retlist
 
-
-
 DATA = db.connectDatabase("lyrics.db")
 def runIt(search, index):
     #testLyrics = getUrlLyrics("https://www.azlyrics.com/lyrics/drake/inmyfeelings.html")
@@ -124,5 +122,4 @@ def runIt(search, index):
 create = False
 if create:
     createTables()
-#runIt("do you love me",1)
-print(searchForLyrics("something in the water"))
+runIt("waves",2)
