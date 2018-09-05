@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h1> Lyric Lookup </h1>
+  <form action="/wordSearch" method="post">
+    <h4>Lyric Query</h4>
+    <input name="lyricquery" type="text" placeholder="Search..">
+    <br/><br/>
+    <input type="submit" value="Search for Lyric"/>
+  </form>
+  <form action="/songSearch" method="post">
+    <h4>Song Name to Add</h4>
+    <input name="songquery" type="text" placeholder="Search..">
+    <br/><br/>
+    <input type="submit" value="Search for Song"/>
+  </form>
+{% endblock %}

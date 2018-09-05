@@ -109,17 +109,21 @@ def searchForLyrics(query):
     return retlist
 
 DATA = db.connectDatabase("lyrics.db")
-def runIt(search, index):
+def runIt(songList, index):
     #testLyrics = getUrlLyrics("https://www.azlyrics.com/lyrics/drake/inmyfeelings.html")
-    songTest = getFiveSongs(formatURL(search))
-    testLyrics = getUrlLyrics(songTest[2][index-1])
-    songID = storeSong(songTest[0][index-1], songTest[1][index-1], testLyrics)
+    testLyrics = getUrlLyrics(songList[2][index-1])
+    songID = storeSong(songList[0][index-1], songList[1][index-1], testLyrics)
     storeLyrics(songID, testLyrics)
     #lyrics2 = cleanUpLyrics(lyrics)
     #songID = storeSong("In My Feelings", "Drake", lyrics2)
     #storeLyrics(songID, lyrics2)
 
-create = False
+def getSongsPlainSearch(search):
+    songTest = getFiveSongs(formatURL(search))
+    return songTest
+
+"""create = False
 if create:
     createTables()
 runIt("waves",2)
+"""

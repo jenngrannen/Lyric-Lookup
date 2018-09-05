@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<ul>
+    {% for link in list %}
+    <h4>     {{ link }}
+    <br/><br/>
+    {% endfor %}
+</ul>
+
+<form action="/back" method="post">
+  <br/> <br/>
+  <input type="submit" value="Back to Home"/>
+</form>
+
+{% endblock %}
