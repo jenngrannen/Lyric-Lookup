@@ -108,7 +108,7 @@ def searchForLyrics(query):
             retlist.append(songID)
     return retlist
 
-DATA = db.connectDatabase("lyrics.db")
+#DATA = db.connectDatabase("lyrics.db")
 def runIt(songList, index):
     #testLyrics = getUrlLyrics("https://www.azlyrics.com/lyrics/drake/inmyfeelings.html")
     testLyrics = getUrlLyrics(songList[2][index-1])
@@ -121,6 +121,9 @@ def runIt(songList, index):
 def getSongsPlainSearch(search):
     songTest = getFiveSongs(formatURL(search))
     return songTest
+
+def connectDatabaseName(name):
+    DATA = name
 
 """create = False
 if create:
