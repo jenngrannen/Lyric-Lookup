@@ -2,6 +2,14 @@ import requests
 import db
 import json
 from bs4 import BeautifulSoup
+import os
+
+def connectDatabaseName(name):
+    global DATA
+    DATA = name
+
+def removeDatabase(name):
+    os.remove(name)
 
 def getUrlLyrics(url):
     result = requests.get(url)
@@ -26,8 +34,9 @@ def cleanUpLyrics(lyrics):
 
 def createTables():
     #data = db.connectDatabase("lyrics.db")
-    db.execute(DATA, "CREATE TABLE names(songID integer PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, artist TEXT NOT NULL, lyrics TEXT NOT NULL)")
-    db.execute(DATA, "CREATE TABLE words(word TEXT PRIMARY KEY, songs BLOB NOT NULL)")
+
+    db.execute(DATA, "CREATE TABLE IF NOT EXISTS names(songID integer PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, artist TEXT NOT NULL, lyrics TEXT NOT NULL)")
+    db.execute(DATA, "CREATE TABLE IF NOT EXISTS words(word TEXT PRIMARY KEY, songs BLOB NOT NULL)")
 
 
 def storeSong(title, artist, lyrics):
@@ -122,8 +131,6 @@ def getSongsPlainSearch(search):
     songTest = getFiveSongs(formatURL(search))
     return songTest
 
-def connectDatabaseName(name):
-    DATA = name
 
 """create = False
 if create:
