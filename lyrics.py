@@ -9,7 +9,8 @@ def connectDatabaseName(name):
     DATA = name
 
 def removeDatabase(name):
-    os.remove(name)
+    db.closeDatabase(DATA)
+    os.remove(DATA)
 
 def getUrlLyrics(url):
     result = requests.get(url)
@@ -116,6 +117,14 @@ def searchForLyrics(query):
         if query in lyricTemp:
             retlist.append(songID)
     return retlist
+
+def getSongName(songIDList):
+    nameList = []
+    artistList = []
+    for songID in songIDList:
+        nameList.append(db.execute(DATA, 'SELECT name FROM names WHERE songID = {}'.format(songID)).fetchone()[0])
+        artistList.append(db.execute(DATA, 'SELECT artist FROM names WHERE songID = {}'.format(songID)).fetchone()[0])
+    return [nameList, artistList]
 
 #DATA = db.connectDatabase("lyrics.db")
 def runIt(songList, index):

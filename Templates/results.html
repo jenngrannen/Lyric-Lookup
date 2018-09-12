@@ -3,8 +3,9 @@
 {% block body %}
 
 <ul>
-    {% for link in list %}
-    <h4>     {{ link }}
+    {% for i in range(length) %}
+    <h4>     {{ list[i] }} </h4>
+    <h5>     {{ list2[i] }} </h5>
     <br/><br/>
     {% endfor %}
 </ul>

@@ -28,7 +28,8 @@ def wordSearch():
     songIDs = searchForLyrics(lyricquery)
     if len(songIDs) == 0:
         return render_template("none.html")
-    return render_template("results.html", list=songIDs)
+    nameAndArtist = getSongName(songIDs)
+    return render_template("results.html", list=nameAndArtist[0], list2 = nameAndArtist[1], length = len(nameAndArtist[0]))
 
 @app.route("/songSearch", methods=["POST"])
 def songSearch():
